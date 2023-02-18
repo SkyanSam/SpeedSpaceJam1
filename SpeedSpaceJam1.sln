@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedSpaceJam1", "SpeedSpaceJam1\SpeedSpaceJam1.csproj", "{41BB11C8-83E0-403E-A540-871A679D0E5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41BB11C8-83E0-403E-A540-871A679D0E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41BB11C8-83E0-403E-A540-871A679D0E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41BB11C8-83E0-403E-A540-871A679D0E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41BB11C8-83E0-403E-A540-871A679D0E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6726311-F927-402A-92DC-D1DC207DE9F3}
+	EndGlobalSection
+EndGlobal

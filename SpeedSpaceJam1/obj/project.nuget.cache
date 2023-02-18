@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "V/noR5oNZhPLMOdcPyQp7a3c+rwatS8bSJ8pAdfgzJYdMrnIXcdVqahP+funO8M3KwPRYSKzCp5y9rU+nT73yQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samue\\OneDrive\\Documents\\GitHub\\SpeedSpaceJam1\\SpeedSpaceJam1\\SpeedSpaceJam1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\samue\\.nuget\\packages\\raylib-cs\\4.2.0.1\\raylib-cs.4.2.0.1.nupkg.sha512",
+    "C:\\Users\\samue\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
