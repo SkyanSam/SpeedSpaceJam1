@@ -46,7 +46,7 @@ namespace SpeedSpaceJam1
             DrawSubmitScore,
             DrawLeaderboard,
         }
-        public static State state;
+        public static State state =  State.DrawScore;
         public static void Start()
         {
             inputBgColor = new Color(29, 29, 29, 255);
@@ -145,6 +145,16 @@ namespace SpeedSpaceJam1
             submitScore_nameField.Update();
             submitScore_submitBtn.Update();
             submitScore_backBtn.Update();
+        }
+        public static void DrawUI()
+        {
+            switch (state)
+            {
+                case State.DrawScore: DrawTextEx(Globals.font, Score.GetFormattedScore(), new Vector2(0, 0), 96, 2, textColor); break;
+                case State.DrawFinalScore: DrawFinalScore(); break;
+                case State.DrawLeaderboard: DrawLeaderboard(); break;
+                case State.DrawSubmitScore: DrawSubmitScore(); break;
+            }
         }
         public static void leaderboard_backBtn_click()
         {

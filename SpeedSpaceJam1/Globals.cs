@@ -9,11 +9,12 @@ namespace SpeedSpaceJam1
 {
     public static class Globals
     {
+        public static List<IBehaviour> behaviours = new List<IBehaviour>();
         public static HttpClient httpClient;
         public static bool quitGame = false;
-        public static Texture2D wallTexture;
+        public static Texture2D[] wallTexture;
         public static Floor[] floors = new Floor[0];
-        public const string resPath = "C:/Users/samue/OneDrive/Documents/GitHub/SpeedSpaceJam1/SpeedSpaceJam1/res/";
+        public static string resPath = "C:/Users/samue/OneDrive/Documents/GitHub/SpeedSpaceJam1/SpeedSpaceJam1/res/";
         public static Font font;
         public static Player player;
         public static Rectangle GetSourceRectangle(this Texture2D tex)

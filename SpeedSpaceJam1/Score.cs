@@ -16,6 +16,14 @@ namespace SpeedSpaceJam1
         public static float time;
         public static float bestTime;
         public static List<string> leaderboardList;
+        public static void Start()
+        {
+            time = 0f;
+        }
+        public static void Update()
+        {
+            time += Raylib.GetFrameTime();
+        }
         public string GetTimeString()
         {
             return $"{MathF.Round(time * 100f) / 100f}s";

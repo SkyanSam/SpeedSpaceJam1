@@ -21,6 +21,7 @@ namespace SpeedSpaceJam1
         public static bool isSaw = true;
         public static bool isStomp = true;
         public static bool isBird = true;
+        public const float typeRange = 500f;
         public static void Start()
         {
             Raylib.InitAudioDevice();
@@ -40,6 +41,14 @@ namespace SpeedSpaceJam1
         }
         public static void Update()
         {
+            isSaw = false; isBird = false; isStomp = false; isHunt = false;
+            for (int i = 0; i < Globals.behaviours.Count; i++)
+            {
+                if (Globals.behaviours[i].type == "saw" && (Globals.behaviours[i].position - Globals.player.position).Length() < typeRange) isSaw = true;
+                if (Globals.behaviours[i].type == "stomp" && (Globals.behaviours[i].position - Globals.player.position).Length() < typeRange) isStomp = true;
+                if (Globals.behaviours[i].type == "bird" && (Globals.behaviours[i].position - Globals.player.position).Length() < typeRange) isBird = true;
+                if (Globals.behaviours[i].type == "hunt" && (Globals.behaviours[i].position - Globals.player.position).Length() < typeRange) isHunt = true;
+            }
             Raylib.UpdateMusicStream(audioMain);
             UpdateAudio(isSaw, ref sawVolume, ref audioSaw);
             UpdateAudio(isBird, ref birdVolume, ref audioBird);

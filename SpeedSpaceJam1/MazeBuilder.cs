@@ -13,7 +13,7 @@ namespace SpeedSpaceJam1
         public static void Start()
         {
             Globals.floors = new Floor[3];
-            Globals.floors[0] = new Floor(GetMultiple("A2II,B2II,B0II,B0I,B2I,C2II,C1II,D1II,D0III,CIII,C0II,D0I,D1I,E1II,E0II,F0I,F2I,G2I,G2IV,F2IV,F4IV,C4III,C3III,B3IV,B4IV,B4III,B2III,A2III"));
+            Globals.floors[0] = new Floor(GetMultiple("A2II,B2II,B0II,B0I,B2I,C2II,C1II,D1II,D0III,C0III,C0II,D0I,D1I,E1II,E0II,F0I,F2I,G2I,G2IV,F2IV,F4IV,C4III,C3III,B3IV,B4IV,B4III,B2III,A2III", inverse:true));
             Globals.floors[1] = new Floor(GetMultiple("B2IV,C2IV,C1IV,E1IV,E0IV,F0III,F4II,E4I,E3I,D3I,D2IV,E2IV,E2I,D2II,D3II,B3I"));
             Globals.floors[2] = new Floor(GetMultiple("C3IV,E3III,E4II,C4I"));
         }
@@ -54,18 +54,19 @@ namespace SpeedSpaceJam1
                 quadrant += code[i];
             switch (quadrant)
             {
-                case "I": origin = new Vector2(1,1); break;
-                case "II": origin = new Vector2(-1, 1); break;
-                case "III": origin = new Vector2(-1, -1); break;
-                case "IV": origin = new Vector2(1, -1); break;
+                case "I": origin = new Vector2(1,-1); break;
+                case "II": origin = new Vector2(-1, -1); break;
+                case "III": origin = new Vector2(-1, 1); break;
+                case "IV": origin = new Vector2(1, 1); break;
             }
             return GetInner(position, origin);
         }
-        public static Vector2[] GetMultiple(string sequence)
+        public static Vector2[] GetMultiple(string sequence, bool inverse=false)
         {
             var split = sequence.Split(',');
             var pts = new Vector2[split.Length];
-            for (int i = 0; i < split.Length; i++) pts[i] = Get(split[i]);
+            if (inverse) for (int i = 0; i < split.Length; i++) pts[i] = Get(split[split.Length - 1 - i]);
+            else for (int i = 0; i < split.Length; i++) pts[i] = Get(split[i]);
             return pts;
         }
     }

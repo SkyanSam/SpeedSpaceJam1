@@ -12,13 +12,14 @@ namespace SpeedSpaceJam1
     {
         Texture2D texture;
         public Vector2 position;
-        public float rotation;
+        public float rotation = 0f;
         Vector2 size;
         Rectangle sourceRect;
         public void DrawSprite()
         {
+            //Console.WriteLine($"pos:{position},size:{size},rot:{rotation}");
             var destinationRect = new Rectangle(position.X, position.Y, size.X, size.Y);
-            Console.WriteLine($"{destinationRect.width},{destinationRect.height}");
+            //Console.WriteLine($"{destinationRect.width},{destinationRect.height}");
             Raylib.DrawTexturePro(texture, sourceRect, destinationRect, size / 2f, rotation, Color.WHITE);
         }
         public void LoadTexture2D(string path)
