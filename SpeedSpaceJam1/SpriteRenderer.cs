@@ -8,7 +8,7 @@ using System.Numerics;
 
 namespace SpeedSpaceJam1
 {
-    class SpriteRenderer
+    public class SpriteRenderer
     {
         Texture2D texture;
         public Vector2 position;

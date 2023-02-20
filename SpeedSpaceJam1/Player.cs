@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Raylib_cs;
 namespace SpeedSpaceJam1
 {
-    class Player
+    public class Player
     {
         public int hp;
         public Texture2D[] textures;
@@ -24,6 +24,26 @@ namespace SpeedSpaceJam1
         public float heightInAir;
         public float jumpSpeed;
         public float gravity;
+        public SpriteRenderer spriteRenderer;
+        public enum FloorState
+        {
+            Normal,
+            Switch,
+            Opposite
+        }
+        public FloorState floorState = FloorState.Normal;
+        public Player()
+        {
+            textures = new Texture2D[4];
+            for (int i = 0; i < textures.Length; i++) 
+                textures[i] = Raylib.LoadTexture(Globals.resPath + $"ghost-{i}");
+            spriteRenderer = new SpriteRenderer();
+            spriteRenderer.position = position;
+            spriteRenderer.SetSizeMultiplier(Vector2.One);
+            spriteRenderer.rotation = GetRotation();
+            floorFollower = new FloorFollower();
+            floorFollower.floorID = 0;
+        }
         public void Update()
         {
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT)) velocity.X += acceleration * maxVelocityX * Raylib.GetFrameTime();
@@ -38,8 +58,32 @@ namespace SpeedSpaceJam1
             }
             velocity.Y -= gravity * Raylib.GetFrameTime();
             heightInAir += velocity.Y;
+
             floorFollower.speed = velocity.X;
             floorFollower.floorOffset = heightInAir;
+            floorFollower.Update();
+            position = floorFollower.position;
+
+            spriteRenderer.position = position;
+            spriteRenderer.SetSizeMultiplier(Vector2.One);
+            spriteRenderer.rotation = GetRotation();
+
+            spriteRenderer.DrawSprite();
         }
+        float switchfloorT;
+        public float GetRotation()
+        {
+            switch(floorState)
+            {
+                case FloorState.Normal:
+                    return (velocity.X / maxVelocityX) * 45f;
+                case FloorState.Switch:
+                    return Globals.Lerp(45f, 135f, switchfloorT);
+                case FloorState.Opposite:
+                    return ((velocity.X / maxVelocityX) * -45f) + 180f;
+            }
+            return 0;
+        }
+
     }
 }

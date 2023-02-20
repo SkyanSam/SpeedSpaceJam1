@@ -15,6 +15,7 @@ namespace SpeedSpaceJam1
         public Floor(Vector2[] points)
         {
             this.points = points;
+            GetTileTransformations();
         }
         public bool IsLineIntersect(Vector2 startPt, Vector2 endPt, out Vector2 collisionPt)
         {

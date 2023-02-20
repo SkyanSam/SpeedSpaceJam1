@@ -30,8 +30,26 @@ camera.target = player;
 camera.zoom = 1f;
 camera.rotation = 0f;
 camera.offset = new Vector2(0, 0);
+
+Globals.player = new Player();
+AudioManager.Start();
+MazeBuilder.Start();
+
+
+Console.Write("FLOOR LINE : ");
+Console.WriteLine(Globals.floors[0].points.ToStringSpecial());
+
+Shader shader;
+unsafe
+{
+    int i = 100;
+    shader = LoadShader(0.ToSbyte(), TextFormat($"{Globals.resPath}shaders/glsl{i}/bloom.fs".ToSbyte()));
+}
+RenderTexture2D target = LoadRenderTexture(1920, 1080);
+
 while (!WindowShouldClose() || !Globals.quitGame)    // Detect window close button or ESC key
 {
+    AudioManager.Update();
     var frameTime = GetFrameTime() * 200f;
     if (IsKeyDown(KeyboardKey.KEY_W))
     {
@@ -56,11 +74,18 @@ while (!WindowShouldClose() || !Globals.quitGame)    // Detect window close butt
     camera.target = player;
     BeginDrawing();
         ClearBackground(Color.RED);
-        BeginMode2D(camera);
-            DrawText("Congrats! You created your first window!\nyes", 190, 200, 20, Color.BLUE);
-            DrawTexture(LoadTexture(workingDir + "/res/ghost.png"), 250, 250, Color.GREEN);
-            ghostSprite.DrawSprite();
-        EndMode2D();
+        BeginTextureMode(target);
+            
+            BeginMode2D(camera);
+                //DrawText("Congrats! You created your first window!\nyes", 190, 200, 20, Color.BLUE);
+                //DrawTexture(LoadTexture(workingDir + "/res/ghost.png"), 250, 250, Color.GREEN);
+                //ghostSprite.DrawSprite();
+            EndMode2D();
+        EndTextureMode();
+
+        BeginShaderMode(shader);
+            DrawTextureRec(target.texture, new Rectangle( 0, 0, (float)target.texture.width, (float)-target.texture.height), new Vector2(0, 0), Color.WHITE);
+        EndShaderMode();
     EndDrawing();
 }
 
