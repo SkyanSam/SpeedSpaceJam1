@@ -1,11 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "V/noR5oNZhPLMOdcPyQp7a3c+rwatS8bSJ8pAdfgzJYdMrnIXcdVqahP+funO8M3KwPRYSKzCp5y9rU+nT73yQ==",
+  "dgSpecHash": "P0OLJQJbvlI/SoB5TEBeCQ48Ause3aw2DuarB+3rorrO2Ci+1yphq6rm2Cvvr9Yr6EknugeSukuAq/rZFtg+Gw==",
   "success": true,
   "projectFilePath": "C:\\Users\\samue\\OneDrive\\Documents\\GitHub\\SpeedSpaceJam1\\SpeedSpaceJam1\\SpeedSpaceJam1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\samue\\.nuget\\packages\\edcanhack.unglide\\2.0.0\\edcanhack.unglide.2.0.0.nupkg.sha512",
+    "C:\\Users\\samue\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\samue\\.nuget\\packages\\raylib-cs\\4.2.0.1\\raylib-cs.4.2.0.1.nupkg.sha512",
     "C:\\Users\\samue\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'EdCanHack.Unglide 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "EdCanHack.Unglide",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
