@@ -29,7 +29,7 @@ namespace SpeedSpaceJam1
         public float jumpSpeed = 25;
         public float gravity = 100;
         public SpriteRenderer spriteRenderer;
-        public int hitBoxSize = 50;
+        public int hitBoxSize = 25;
         float timeSinceHit = 0f;
         public float restHeight = 0f;
         public enum FloorState
@@ -145,9 +145,7 @@ namespace SpeedSpaceJam1
             if (hp == 0)
             {
                 // replace later restarting the entire process takes too much time
-                string currentApplication = Process.GetCurrentProcess().MainModule.FileName;
-                Process.Start(currentApplication);
-                Environment.Exit(0);
+                Globals.Restart();
             }
         }
         public float GetTargetRotation()

@@ -32,7 +32,7 @@ namespace SpeedSpaceJam1
             var mousePoint = GetMousePosition();
             if (CheckCollisionPointRec(mousePoint, textBox))
             {
-                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
                 {
                     onClick.Invoke();
                 }

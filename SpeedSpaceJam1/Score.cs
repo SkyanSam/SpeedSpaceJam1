@@ -12,7 +12,7 @@ namespace SpeedSpaceJam1
 {
     class Score
     {
-        public HttpClient httpClient = new HttpClient();
+        public static HttpClient httpClient = new HttpClient();
         public static float time;
         public static float bestTime;
         public static List<string> leaderboardList;
@@ -32,19 +32,7 @@ namespace SpeedSpaceJam1
         {
             Raylib.DrawText(GetTimeString(), 10, 10, 50, Color.WHITE);
         }
-        public void DrawFinalTimePrompt()
-        {
-            
-        }
-        public void DrawSubmitScorePrompt()
-        {
-
-        }
-        public void DrawLeaderboard()
-        {
-
-        }
-        public void GetLeaderboard()
+        public static void GetLeaderboard()
         {
             DreamloGetScores(httpClient);
         }
@@ -60,24 +48,28 @@ namespace SpeedSpaceJam1
             leaderboardList = new List<string>();
             for (int i = 0; entries.Contains($"{i}"); i++)
             {
-                leaderboardList[i] = $"{entries[i]["name"]} : {entries[i]["score"]}";
+                leaderboardList[i] = $"{entries[i]["name"]} : {float.Parse(entries[i]["score"].ToString()) / 100f}s";
             }
         }
         public static string GetFormattedNames()
         {
-            return "";
+            var str = "";
+            foreach (var i in leaderboardList) str += $"{i.Split(':')[0]}\n";
+            return str;
         }
         public static string GetFormattedScores()
         {
-            return "";
+            var str = "";
+            foreach (var i in leaderboardList) str += $"{i.Split(':')[1]}\n";
+            return str;
         }
         public static string GetFormattedScore()
         {
-            return "";
+            return $"{MathF.Round(time * 100f) / 100f}s";
         }
         public static string GetBestScore()
         {
-            return "";
+            return $"{MathF.Round(bestTime * 100f) / 100f}s";
         }
     }
 }

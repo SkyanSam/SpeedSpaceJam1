@@ -84,7 +84,7 @@ namespace SpeedSpaceJam1
                 textColor,
                 buttonColor,
                 buttonColor,
-                delegate () { finalScore_leaderboardBtn_click(); }
+                delegate () { finalScore_playBtn_click(); }
             );
             finalScore_exitBtn = new UIButton(
                 "EXIT GAME",
@@ -92,7 +92,7 @@ namespace SpeedSpaceJam1
                 textColor,
                 buttonColor,
                 buttonColor,
-                delegate () { finalScore_leaderboardBtn_click(); }
+                delegate () { finalScore_exitBtn_click(); }
             );
             submitScore_nameField = new UIInputBox(
                 15,
@@ -162,7 +162,7 @@ namespace SpeedSpaceJam1
         }
         public static void finalScore_submitScoreBtn_click()
         {
-            state = State.DrawFinalScore;
+            state = State.DrawSubmitScore;
         }
         public static void finalScore_leaderboardBtn_click()
         {
@@ -170,7 +170,7 @@ namespace SpeedSpaceJam1
         }
         public static void finalScore_playBtn_click()
         {
-            state = State.DrawScore;
+            Globals.Restart();
         }
         public static void finalScore_exitBtn_click()
         {

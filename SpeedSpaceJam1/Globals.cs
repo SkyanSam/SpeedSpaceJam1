@@ -5,12 +5,14 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Raylib_cs;
+using System.Diagnostics;
 namespace SpeedSpaceJam1
 {
     public static class Globals
     {
+        public static bool isPaused = false;
         public static List<IBehaviour> behaviours = new List<IBehaviour>();
-        public static HttpClient httpClient;
+        public static HttpClient httpClient = new HttpClient();
         public static bool quitGame = false;
         public static Texture2D[] wallTexture;
         public static Floor[] floors = new Floor[0];
@@ -56,6 +58,12 @@ namespace SpeedSpaceJam1
             string str = "";
             foreach (var e in list) str += $"({e.X},{e.Y}),";
             return str;
+        }
+        public static void Restart()
+        {
+            string currentApplication = Process.GetCurrentProcess().MainModule.FileName;
+            Process.Start(currentApplication);
+            Environment.Exit(0);
         }
     }
 }
